@@ -162,9 +162,9 @@
                 <div class="PDFborder">
                         <div class="top">
                             <div class="full-width">
-                                <img src="images/xpdLogo.png" alt="XPD Logo">
+                                <img style="position: relative;right: 200px;" src="images/xpdLogo.png" alt="XPD Logo">
                             </div>
-                            <div style="padding-top: 50px;" class="full-width">
+                            <div style="padding-top: 50px;position: relative;right: 200px;" class="full-width">
                                 XPD GLOBAL (USA)<br>3340A GREENS RD BLD ST 700<br>HOUSTON, TX 77032, UNITED STATES <br>Contact: AEROSPACE TEAM<br>Phone: 786-7471184<br>Fax: 855-560-3632
                             </div>
                             <div class=" full-width"><strong style="font-size: 20px; position: relative;left: 150px;top: 20px;"> Delivery Order (DO) - Export</strong></div>
@@ -179,27 +179,27 @@
                         <hr>
                         <div class="middle full-width">
                             <div class="full-width">
-                                <p>Pickup from:${puf}</p>
+                                <p>Pickup from:<br>${puf}</p>
                                 <p><strong>Contact:${ pickup_contact }</strong></p>  
                                 <p><strong>Phone:${pickup_phone}</strong>
                 </p>            <p><strong>Email:${pickup_email}</strong>
                 </p>            </div>
-                            <div class="full-width">Delivering Carrier: ${delivering_carrier }</div>
-                            <div class="full-width">Deliver To: ${ deliver_to }</div>
+                            <div class="full-width">Delivering Carrier:<br> ${delivering_carrier }</div>
+                            <div class="full-width">Deliver To: <br>${ deliver_to }</div>
                             <div class="full-width">
-                                Return To: ${return_to}
+                                Return To: <br>${return_to}
                             </div>
                         </div>
                         <div class="middle2 full-width">
                             <div class="full-width">
-                                <p>Shipper (Name and Address): ${shipper_address}</p>
+                                <p>Shipper (Name and Address):<br> <br>${shipper_address}</p>
                                 <p><strong>Contact: ${shipper_contact}</strong>
             </p>                  <p><strong>Phone: ${shipper_phone}</strong>
                 </p>                <p><strong>Fax: ${shipper_fax}</strong>
                 </p>              <p><strong>Email:${shipper_email} </strong>
                 </p>            </div>
                             <div class="full-width">
-                                <p>Consignee:${consignee} </p>
+                                <p>Consignee:<br>${consignee} </p>
                                 <p><strong>Email:${consignee_email} </strong>
                 </p>            </div>
                             <div class="full-width"></div>
@@ -212,22 +212,22 @@
                         </div>
                         <div class="bottom full-width">
                             <div class="full-width">
-                                <p>Booking Number:${booking_number} <strong></strong></p>
-                                <p>House Number:${house_number} <strong></strong></p>
-                                <p>Customer Reference:${customerRef} <strong></strong></p>
+                                <p>Booking Number:<strong><br>${booking_number} </strong></p>
+                                <p>House Number: <strong><br>${house_number}</strong></p>
+                                <p>Customer Reference:<strong><br>${customerRef} </strong></p>
                             </div>
                             <div class="full-width">
-                                <p>Carrier:${carrier} <strong></strong></p>
-                                <p>Flight/Voyage:${fly_voy} <strong></strong></p>
+                                <p>Carrier:<br><strong>${carrier} </strong></p>
+                                <p>Flight/Voyage:<br><strong>${fly_voy} </strong></p>
                             </div>
                             <div class="full-width">
-                                <p>Port of Loading:${pol} <strong></strong></p>
-                                <p>Port of Discharge:${pod} <strong></strong></p>
-                                <p>Final Destination:${finalDest} <strong></strong></p>
+                                <p>Port of Loading:<br><strong>${pol} </strong></p>
+                                <p>Port of Discharge:<strong><br>${pod} </strong></p>
+                                <p>Final Destination:<strong><br>${finalDest} </strong></p>
                             </div>
                             <div class="full-width">
-                                <p>Departure Date:${depDate} <strong></strong></p>
-                                <p>Arrival Date:${arrDate}<strong></strong></p>
+                                <p>Departure Date:<strong><br>${depDate}</strong></p>
+                                <p>Arrival Date:<strong><br>${arrDate}</strong></p>
                             </div>
                         </div>
                         <div class="bottom full-width">
@@ -240,11 +240,11 @@
                                     <th>Vol Weight/Chargeable Weight</th>
                                 </tr>
                                 <tr>
-                                    <td>${marks_and_numbers}}</td>
-                                    <td>${pieces}} </td>
-                                    <td>${description}}</td>
-                                    <td>${weight}}kg</td>
-                                    <td>${vol_weight}}kg</td>
+                                    <td>${marks_and_numbers}</td>
+                                    <td>${pieces} </td>
+                                    <td>${description}</td>
+                                    <td>${weight}kg</td>
+                                    <td>${vol_weight}kg</td>
                                 </tr>
                             </table>
                             
