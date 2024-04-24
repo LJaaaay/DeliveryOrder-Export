@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer / Guarantee of Payment</title>
+    <style>
+        img {
+            margin-left: 150px;
+            float: right;
+            max-width: 150px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+        .box {
+            width: 350px;
+        }
+        .address {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <form id="pdfForm">
+        Date: <input type="text" name="date" id="date"><br>
+        xpd file #: <input type="text" name="file_number" id="file_number"><br>
+        Pickup From: <input type="text" name="PUF" id="PUF"><br>
+        Pickup from Contact: <input type="text" name="pickup_contact" id="pickup_contact"><br>
+        Pickup from Phone: <input type="text" name="pickup_phone" id="pickup_phone"><br>
+        Pickup from email: <input type="text" name="pickup_email" id="pickup_email"><br>
+        Delivering Carrier: <input type="text" name="delivering_carrier" id="delivering_carrier"><br>
+        Deliver To: <input type="text" name="deliver_to" id="deliver_to"><br>
+        Return To: <input type="text" name="return_to" id="return_to"><br>
+        Shipper Address: <input type="text" name="shipper_address" id="shipper_address"><br>
+        Shipper Contact: <input type="text" name="shipper_contact" id="shipper_contact"><br>
+        Shipper Phone: <input type="text" name="shipper_phone" id="shipper_phone"><br>
+        Shipper Fax: <input type="text" name="shipper_fax" id="shipper_fax"><br>
+        Shipper Email: <input type="text" name="shipper_email" id="shipper_email"><br>
+        Consignee: <input type="text" name="consignee" id="consignee"><br>
+        Consignee Email: <input type="text" name="consignee_email" id="consignee_email"><br>
+        Bill to Party: <input type="text" name="BTP" id="btp"><br>
+        Bill to Party Contact: <input type="text" name="btp_contact" id="btp_contact"><br>
+        Bill to Party Phone: <input type="text" name="btp_phone" id="btp_phone"><br>
+        Bill to Party email: <input type="text" name="btp_email" id="btp_email"><br>
+        Booking Number: <input type="text" name="booking_number" id="booking_number"><br>
+        House Number: <input type="text" name="house_number" id="house_number"><br>
+        Customer Reference: <input type="text" name="customerRef" id="customerRef"><br>
+        Carrier: <input type="text" name="carrier" id="carrier"><br>
+        Flight/Voyage: <input type="text" name="fly_voy" id="fly_voy"><br>
+        Por of Loading: <input type="text" name="pol" id="pol"><br>
+        Por of Discharge: <input type="text" name="pod" id="pod"><br>
+        Final Destination: <input type="text" name="finalDest" id="finalDest"><br>
+        Departure Date: <input type="text" name="depDate" id="depDate"><br>
+        Arrival Date: <input type="text" name="arrDate" id="arrDate"><br>
+        Marks and Numbers: <input type="text" name="marks_and_numbers" id="marks_and_numbers"><br>
+        Pieces: <input type="text" name="pieces" id="pieces"><br>
+        Description: <input type="text" name="description" id="description"><br>
+        Weight: <input type="text" name="weight" id="weight"><br>
+        Vol Weight/Chargeable Weight: <input type="text" name="vol_weight" id="vol_weight"><br>
+        <button type="submit">Generate Preview</button>
+    </form>
+    <div id="preview"></div>
+    
+    <script>
+        document.getElementById('pdfForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting via the browser
+            var previewDiv = document.getElementById('preview'); 
+            var date= document.getElementById('date').value;
+            var xpdfile= document.getElementById('file_number').value;
+            var puf= document.getElementById('PUF').value;
+            var consignee= document.getElementById('consignee').value;
+            var pickup_contact= document.getElementById('pickup_contact').value;
+            var pickup_phone= document.getElementById('pickup_phone').value;
+            var pickup_email= document.getElementById('pickup_email').value;
+            var delivering_carrier= document.getElementById('delivering_carrier').value;
+            var deliver_to= document.getElementById('deliver_to').value;
+            var return_to= document.getElementById('return_to').value;
+            var shipper_address= document.getElementById('shipper_address').value;
+            var shipper_contact= document.getElementById('shipper_contact').value;
+            var shipper_phone= document.getElementById('shipper_phone').value;
+            var shipper_fax= document.getElementById('shipper_fax').value;
+            var shipper_email= document.getElementById('shipper_email').value;
+            var consignee_email= document.getElementById('consignee_email').value;
+            var btp= document.getElementById('btp').value;
+            var btp_contact= document.getElementById('btp_contact').value;
+            var btp_phone= document.getElementById('btp_phone').value;
+            var btp_email= document.getElementById('btp_email').value;
+            var booking_number= document.getElementById('booking_number').value;
+            var house_number= document.getElementById('house_number').value;
+            var customerRef= document.getElementById('customerRef').value;
+            var carrier= document.getElementById('carrier').value;
+            var fly_voy= document.getElementById('fly_voy').value;
+            var pol= document.getElementById('pol').value;
+            var pod= document.getElementById('pod').value;
+            var finalDest= document.getElementById('finalDest').value;
+            var depDate= document.getElementById('depDate').value;
+            var arrDate= document.getElementById('arrDate').value;
+            var marks_and_numbers= document.getElementById('marks_and_numbers').value;
+            var pieces= document.getElementById('pieces').value;
+            var description= document.getElementById('description').value;
+            var weight= document.getElementById('weight').value;
+            var vol_weight= document.getElementById('vol_weight').value;
+            
+            
+            previewDiv.innerHTML = `
+            
+            <!DOCTYPE html>
+<html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Vertical Layout 1-3-3-1</title>
+                <style>
+                    table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    }
+                    th, td {
+                    border: 1px solid black;
+                    padding: 8px;
+                    text-align: left;
+                    }
+                    th {
+                    background-color: #f0f0f0; /* Grey background for the header */
+                    }
+                    img{
+                        max-width: 200px;
+                    }
+                    .full-width {
+                        width: 100%;
+                        
+                    }
+                    /* Top section with three horizontal divs */
+                    .top {
+                        display: flex;
+                        font-size: 12px;
+                    }
+                    .top > div {
+                        flex: 1; /* Divide space equally among the divs */
+                    }
+                    /* Adjusting the margin for separation */
+                    .middle, .middle2, .bottom {
+                        margin-top: 10px;
+                        display: flex;
+                    }
+                    .center{
+                        position: relative;
+                        left: 300px;
+                    }
+                    .PDFborder{
+                        border: 2px solid black;
+                        width: 900px;
+                        height: 1000px;
+                        padding: 20px;
+                        font-family: sans-serif;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="PDFborder">
+                        <div class="top">
+                            <div class="full-width">
+                                <img src="E:/XPD Global/XPDtryouts/PDF/images/xpdLogo.png" alt="XPD Logo">
+                            </div>
+                            <div style="padding-top: 50px;" class="full-width">
+                                XPD GLOBAL (USA)<br>3340A GREENS RD BLD ST 700<br>HOUSTON, TX 77032, UNITED STATES <br>Contact: AEROSPACE TEAM<br>Phone: 786-7471184<br>Fax: 855-560-3632
+                            </div>
+                            <div class=" full-width"><strong style="font-size: 20px; position: relative;left: 150px;top: 20px;"> Delivery Order (DO) - Export</strong></div>
+                            <div class="full-width">
+                                <br><br><br><br>
+                                <p>File Number:</p>
+                                <p><strong>${ xpdfile }</strong>
+            </p>                    <p>Date:</p>
+                                <p><strong>${ date }</strong></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="middle full-width">
+                            <div class="full-width">
+                                <p>Pickup from:${puf}</p>
+                                <p><strong>Contact:${ pickup_contact }</strong></p>  
+                                <p><strong>Phone:${pickup_phone}</strong>
+                </p>            <p><strong>Email:${pickup_email}</strong>
+                </p>            </div>
+                            <div class="full-width">Delivering Carrier: ${delivering_carrier }</div>
+                            <div class="full-width">Deliver To: ${ deliver_to }</div>
+                            <div class="full-width">
+                                Return To: ${return_to}
+                            </div>
+                        </div>
+                        <div class="middle2 full-width">
+                            <div class="full-width">
+                                <p>Shipper (Name and Address): ${shipper_address}</p>
+                                <p><strong>Contact: ${shipper_contact}</strong>
+            </p>                  <p><strong>Phone: ${shipper_phone}</strong>
+                </p>                <p><strong>Fax: ${shipper_fax}</strong>
+                </p>              <p><strong>Email:${shipper_email} </strong>
+                </p>            </div>
+                            <div class="full-width">
+                                <p>Consignee:${consignee} </p>
+                                <p><strong>Email:${consignee_email} </strong>
+                </p>            </div>
+                            <div class="full-width"></div>
+                            <div class="full-width">
+                                <p>Bill to Party:${btp} </p>
+                                <p><strong>Contact:${btp_contact} </strong>
+            </p>                  <p><strong>Phone:${btp_phone} </strong>
+                </p>                <p><strong>Email:${btp_email} </strong>
+                </p>            </div>
+                        </div>
+                        <div class="bottom full-width">
+                            <div class="full-width">
+                                <p>Booking Number:${booking_number} <strong></strong></p>
+                                <p>House Number:${house_number} <strong></strong></p>
+                                <p>Customer Reference:${customerRef} <strong></strong></p>
+                            </div>
+                            <div class="full-width">
+                                <p>Carrier:${carrier} <strong></strong></p>
+                                <p>Flight/Voyage:${fly_voy} <strong></strong></p>
+                            </div>
+                            <div class="full-width">
+                                <p>Port of Loading:${pol} <strong></strong></p>
+                                <p>Port of Discharge:${pod} <strong></strong></p>
+                                <p>Final Destination:${finalDest} <strong></strong></p>
+                            </div>
+                            <div class="full-width">
+                                <p>Departure Date:${depDate} <strong></strong></p>
+                                <p>Arrival Date:${arrDate}<strong></strong></p>
+                            </div>
+                        </div>
+                        <div class="bottom full-width">
+                            <table>
+                                <tr>
+                                    <th>Marks and Numbers</th>
+                                    <th>Pieces</th>
+                                    <th>Description</th>
+                                    <th>Weight</th>
+                                    <th>Vol Weight/Chargeable Weight</th>
+                                </tr>
+                                <tr>
+                                    <td>${marks_and_numbers}}</td>
+                                    <td>${pieces}} </td>
+                                    <td>${description}}</td>
+                                    <td>${weight}}kg</td>
+                                    <td>${vol_weight}}kg</td>
+                                </tr>
+                            </table>
+                            
+                        </div>
+                        <hr>
+                        <div class="bottom full-width">
+                            <div class="full-width">
+                                <strong style="font-size: 20px;">TOTALS:</strong>
+                            </div>
+                            <div class="full-width">
+                                
+                            </div>
+                            <div class="full-width">
+                                
+                            </div>
+                            <div class="totals full-width">
+                                <div>Total Pieces: 10</div>
+                                <div>Total Weight: 100kg</div>
+                                <div>Total Vol Weight: 120kg</div>
+                            </div>
+                        </div>
+                            
+                </div>
+            </body>
+            </html>
+                          `;
+        });
+    </script>
+</body>
+</html>
