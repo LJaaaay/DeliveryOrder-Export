@@ -77,11 +77,11 @@
         Arrival Date: <input type="text" name="arrDate" id="arrDate" maxlength="10"><br>
         <div id="tableRows">
             <div class="tableRow">
-                Marks and Numbers: <input type="text" name="marks_and_numbers[]" class="marks_and_numbers" maxlength="5">
-                Pieces: <input type="text" name="pieces[]" class="pieces" maxlength="5">
+                Marks and Numbers: <input type="number" name="marks_and_numbers[]" class="marks_and_numbers" maxlength="5">
+                Pieces: <input type="number" name="pieces[]" class="pieces" maxlength="5">
                 Description: <input type="text" name="description[]" class="description" maxlength="20">
-                Weight: <input type="text" name="weight[]" class="weight" maxlength="5">
-                Vol Weight/Chargeable Weight: <input type="text" name="vol_weight[]" class="vol_weight" maxlength="5">
+                Weight: <input type="number" name="weight[]" class="weight" maxlength="5">
+                Vol Weight/Chargeable Weight: <input type="number" name="vol_weight[]" class="vol_weight" maxlength="5">
                 <button type="button" onclick="removeRow(this)">Remove</button>
             </div>
         </div>
@@ -146,7 +146,7 @@
             var depDate= document.getElementById('depDate').value;
             var arrDate= document.getElementById('arrDate').value;
             var rows = document.getElementsByClassName('tableRow');
-            var tableHTML = '<table style ="border: 2px solid black;text-align: left;"><tr><th style = "background-color: #f0f0f0;">Marks and Numbers</th><th style = "background-color: #f0f0f0;">Pieces</th><th style = "background-color: #f0f0f0;">Description</th><th style = "background-color: #f0f0f0;">Weight</th><th style = "background-color: #f0f0f0;">Vol Weight/Chrg Weight</th></tr>';
+            var tableHTML = '<table style ="border: 2px solid black;text-align: left;"><tr><th style = "background-color: #f0f0f0;">Marks and Numbers</th><th style = "background-color: #f0f0f0;">Pieces</th><th style = "background-color: #f0f0f0;">Description</th><th style = "background-color: #f0f0f0;">Weight</th><th style = "background-color: #f0f0f0;">Vol Wgt/Chrg Wgt</th></tr>';
 
             Array.from(rows).forEach(function(row) {
                 var marks = row.querySelector('.marks_and_numbers').value;
