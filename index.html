@@ -148,6 +148,9 @@
             var rows = document.getElementsByClassName('tableRow');
             var tableHTML = '<table style ="border: 2px solid black;text-align: left;"><tr><th style = "background-color: #f0f0f0;">Marks and Numbers</th><th style = "background-color: #f0f0f0;">Pieces</th><th style = "background-color: #f0f0f0;">Description</th><th style = "background-color: #f0f0f0;">Weight</th><th style = "background-color: #f0f0f0;">Vol Wgt/Chrg Wgt</th></tr>';
 
+                
+                var totalSumWeight = 0;
+                var totalSumVolWeight = 0;
                 var totalPieces = 0;
                 var totalWeight = 0;
                 var totalVolWeight = 0;
@@ -159,9 +162,11 @@
                 var volWeight = parseFloat(row.querySelector('.vol_weight').value) || 0;
                 
                 totalPieces += pieces;
-                totalWeight += weight;
-                totalVolWeight += volWeight;
-
+                totalSumWeight += weight;
+                totalSumVolWeight += volWeight;
+                totalWeight = totalSumWeight*totalPieces
+                totalVolWeight = totalVolWeight*totalPieces
+                
                 tableHTML += `<tr>
                     <td class="wrap-text" style ="border: 2px solid black;">${marks}</td>
                     <td class="wrap-text" style ="border: 2px solid black;">${pieces}</td>
