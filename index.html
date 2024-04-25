@@ -111,7 +111,7 @@
             row.parentNode.removeChild(row);
         }
 
-       
+        
         document.getElementById('pdfForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the form from submitting via the browser
             var previewDiv = document.getElementById('preview'); 
@@ -148,12 +148,19 @@
             var rows = document.getElementsByClassName('tableRow');
             var tableHTML = '<table style ="border: 2px solid black;text-align: left;"><tr><th style = "background-color: #f0f0f0;">Marks and Numbers</th><th style = "background-color: #f0f0f0;">Pieces</th><th style = "background-color: #f0f0f0;">Description</th><th style = "background-color: #f0f0f0;">Weight</th><th style = "background-color: #f0f0f0;">Vol Wgt/Chrg Wgt</th></tr>';
 
+                var totalPieces = 0;
+                var totalWeight = 0;
+                var totalVolWeight = 0;
             Array.from(rows).forEach(function(row) {
                 var marks = row.querySelector('.marks_and_numbers').value;
-                var pieces = row.querySelector('.pieces').value;
+                var pieces = parseFloat(row.querySelector('.pieces').value) || 0;
                 var description = row.querySelector('.description').value;
-                var weight = row.querySelector('.weight').value;
-                var volWeight = row.querySelector('.vol_weight').value;
+                var weight = parseFloat(row.querySelector('.weight').value) || 0;
+                var volWeight = parseFloat(row.querySelector('.vol_weight').value) || 0;
+                
+                totalPieces += pieces;
+                totalWeight += weight;
+                totalVolWeight += volWeight;
 
                 tableHTML += `<tr>
                     <td class="wrap-text" style ="border: 2px solid black;">${marks}</td>
@@ -163,7 +170,7 @@
                     <td class="wrap-text" style ="border: 2px solid black;">${volWeight}</td>
                 </tr>`;
             });
-
+            
             tableHTML += '</table>';
 
             previewDiv.innerHTML = `
@@ -320,9 +327,9 @@
                                 
                             </div>
                             <div class="totals full-width">
-                                <div>Total Pieces: 10</div>
-                                <div>Total Weight: 100kg</div>
-                                <div>Total Vol Weight: 120kg</div>
+                                <div>Total Pieces: ${totalPieces}</div>
+                                <div>Total Weight: ${totalWeight}</div>
+                                <div>Total Vol Weight: ${totalVolWeight}</div>
                             </div>
                         </div>
                             
