@@ -256,7 +256,7 @@
         <button type="button" onclick="addRow()">Add Row</button><br><br>
         <button type="submit">Generate Preview</button>
     </form>
-
+<br><br><br>
 
     <div id="preview"></div>
     
@@ -421,6 +421,12 @@
                         position: relative;
                         left: 300px;
                     }
+                    .container {
+                        display: flex;
+                        justify-content: center; /* centers horizontally */
+                        align-items: center; /* centers vertically if you want full centering */
+                        
+                    }
                     .PDFborder{
                         border: 2px solid black;
                         width: 900px;
@@ -431,6 +437,7 @@
                 </style>
             </head>
             <body>
+            <div class="container">
                 <div class="PDFborder">
                         <div class="top">
                             <div class="full-width">
@@ -530,6 +537,7 @@
                         </div>
                             
                 </div>
+            </div>
             </body>
             </html>
                           `;
