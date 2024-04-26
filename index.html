@@ -5,6 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disclaimer / Guarantee of Payment</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            padding: 20px;
+        }
+
+        form {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%; /* Use full width of the container */
+            max-width: 1200px; /* Maximum width */
+            margin: 0 auto; /* Centering the form */
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="date"] {
+            width: calc(50% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #0460FA;
+            border-radius: 5px;
+            box-sizing: border-box;
+            max-width: 300px; /* Limiting form width for better aesthetics */          
+            margin: auto; /* Centering the form on the page */
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus {
+            border-color: #0340c2;
+        }
+
+        button {
+            background-color: #0460FA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0340c2;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 20px;
+        }
+
+        #tableRows {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f4f4f4; /* Light grey background for visibility */
+            border-radius: 8px;
+        }
+
+        .tableRow {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* Divide the row into 5 equal columns */
+            gap: 10px; /* Space between grid items */
+            align-items: end;
+            margin-bottom: 15px; /* Space between each row */
+        }
+
+        .tableRow label {
+            font-size: 0.8em;
+            color: #666;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+
+        .tableRow input, .tableRow button {
+            width: 100%; /* Full width of grid column */
+            padding: 8px;
+            border: 1px solid #0460FA;
+            border-radius: 4px;
+        }
+
+        .remove-button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .remove-button:hover {
+            background-color: #ff2121;
+        }
+
+        button[type="submit"], button[type="button"] {
+            width: auto;
+            padding: 10px 20px;
+            margin-top: 20px; /* Additional spacing from the last row */
+            grid-column: span 5; /* Span across all columns for full width */
+        }
+        .form-group {
+            display: grid;
+            grid-template-columns: 1fr 3fr; /* Allocation of space between label and field */
+            gap: 10px; /* Space between label and field */
+            margin-bottom: 15px; /* Space between each form group */
+        }    
+
+        
         img {
             margin-left: 150px;
             float: right;
@@ -34,7 +147,7 @@
             overflow: hidden; /* Hides any content that overflows the cell's box */
             text-overflow: ellipsis; /* Render ellipses (...) to represent clipped text */
             white-space: nowrap; /* Prevents text from wrapping */
-            max-width: 150px; /* Sets a maximum width for each cell */
+            max-width: 20%; /* Sets a maximum width for each cell */
         }
         .wrap-text {
             white-space: normal; /* Allows text to wrap */
@@ -45,49 +158,106 @@
 </head>
 <body>
     <form id="pdfForm">
-        Date: <input type="date" name="date" id="date" maxlength="10"><br>
-        xpd file #: <input type="text" name="file_number" id="file_number" maxlength="10"><br>
-        Pickup From: <input type="text" name="PUF" id="PUF" maxlength="50"><br>
-        Pickup from Contact: <input type="text" name="pickup_contact" id="pickup_contact" maxlength="20"><br>
-        Pickup from Phone: <input type="number" name="pickup_phone" id="pickup_phone" maxlength="15"><br>
-        Pickup from email: <input type="email" name="pickup_email" id="pickup_email" maxlength="30"><br>
-        Delivering Carrier: <input type="text" name="delivering_carrier" id="delivering_carrier" maxlength="15"><br>
-        Deliver To: <input type="text" name="deliver_to" id="deliver_to" maxlength="20"><br>
-        Return To: <input type="text" name="return_to" id="return_to" maxlength="20"><br>
-        Shipper Address: <input type="text" name="shipper_address" id="shipper_address" maxlength="50"><br>
-        Shipper Contact: <input type="text" name="shipper_contact" id="shipper_contact" maxlength="15"><br>
-        Shipper Phone: <input type="number" name="shipper_phone" id="shipper_phone" maxlength="15"><br>
-        Shipper Fax: <input type="text" name="shipper_fax" id="shipper_fax" maxlength="15"><br>
-        Shipper Email: <input type="email" name="shipper_email" id="shipper_email" maxlength="30"><br>
-        Consignee: <input type="text" name="consignee" id="consignee" maxlength="20"><br>
-        Consignee Email: <input type="text" name="consignee_email" id="consignee_email" maxlength="20"><br>
-        Bill to Party: <input type="text" name="BTP" id="btp" maxlength="50"><br>
-        Bill to Party Contact: <input type="text" name="btp_contact" id="btp_contact" maxlength="20"><br>
-        Bill to Party Phone: <input type="number" name="btp_phone" id="btp_phone" maxlength="20"><br>
-        Bill to Party email: <input type="email" name="btp_email" id="btp_email" maxlength="20"><br>
-        Booking Number: <input type="text" name="booking_number" id="booking_number" maxlength="20"><br>
-        House Number: <input type="text" name="house_number" id="house_number" maxlength="20"><br>
-        Customer Reference: <input type="text" name="customerRef" id="customerRef" maxlength="20"><br>
-        Carrier: <input type="text" name="carrier" id="carrier" maxlength="20"><br>
-        Flight/Voyage: <input type="text" name="fly_voy" id="fly_voy" maxlength="20"><br>
-        Por of Loading: <input type="text" name="pol" id="pol" maxlength="30"><br>
-        Por of Discharge: <input type="text" name="pod" id="pod" maxlength="30"><br>
-        Final Destination: <input type="text" name="finalDest" id="finalDest" maxlength="20"><br>
-        Departure Date: <input type="text" name="depDate" id="depDate" maxlength="10"><br>
-        Arrival Date: <input type="text" name="arrDate" id="arrDate" maxlength="10"><br>
+        <div class="form-group">
+            Issuing Carrier's Agent Name: <input type="text" name="carrier_agent_name" id="carrier_agent_name" maxlength="50">
+            Issuing Carrier's Agent Contact: <input type="text" name="carrier_agent_contact" id="carrier_agent_contact" maxlength="15">
+            Issuing Carrier's Agent Phone: <input type="number" name="carrier_agent_phone" id="carrier_agent_phone" maxlength="15">
+            Issuing Carrier's Agent Fax: <input type="number" name="carrier_agent_fax" id="carrier_agent_fax" maxlength="15">
+        </div>
+        <br><br>
+        <div class="form-group">
+            Date: <input type="date" name="date" id="date" maxlength="10">
+            xpd file #: <input type="text" name="file_number" id="file_number" maxlength="10">
+        </div>
+        <br><br>
+        <div class="form-group">
+            Pickup From: <input type="text" name="puf" id="puf" maxlength="50">
+            Pickup from Contact: <input type="text" name="pickup_contact" id="pickup_contact" maxlength="20">
+            Pickup from Phone: <input type="text" name="pickup_phone" id="pickup_phone" maxlength="15">
+            Pickup from email: <input type="text" name="pickup_email" id="pickup_email" maxlength="20">  
+        </div>
+        <br><br>
+        <div class="form-group">
+            Delivering Carrier: <input type="text" name="delivering_carrier" id="delivering_carrier" maxlength="15">
+            Deliver To: <input type="text" name="deliver_to" id="deliver_to" maxlength="20">
+            Return To: <input type="text" name="return_to" id="return_to" maxlength="20">  
+        </div>
+        <br><br>
+        <div class="form-group">
+            Shipper Address: <input type="text" name="shipper_address" id="shipper_address" maxlength="50">
+            Shipper Contact: <input type="text" name="shipper_contact" id="shipper_contact" maxlength="15">
+            Shipper Phone: <input type="text" name="shipper_phone" id="shipper_phone" maxlength="15">
+            Shipper Fax: <input type="text" name="shipper_fax" id="shipper_fax" maxlength="15">
+            Shipper Email: <input type="text" name="shipper_email" id="shipper_email" maxlength="20">
+            
+        </div>
+        <br><br>
+        <div class="form-group">
+            Consignee: <input type="text" name="consignee" id="consignee" maxlength="20">
+            Consignee Email: <input type="text" name="consignee_email" id="consignee_email" maxlength="20">
+        
+        </div>
+        <br><br>
+        <div class="form-group">
+            Bill to Party: <input type="text" name="BTP" id="btp" maxlength="50">
+            Bill to Party Contact: <input type="text" name="btp_contact" id="btp_contact" maxlength="20">
+            Bill to Party Phone: <input type="text" name="btp_phone" id="btp_phone" maxlength="20">
+            Bill to Party email: <input type="text" name="btp_email" id="btp_email" maxlength="20">
+            
+        </div>
+        <br><br>
+        <div class="form-group">
+            Booking Number: <input type="text" name="booking_number" id="booking_number" maxlength="20">
+            House Number: <input type="text" name="house_number" id="house_number" maxlength="20">
+            Customer Reference: <input type="text" name="customerRef" id="customerRef" maxlength="20">
+            Carrier: <input type="text" name="carrier" id="carrier" maxlength="20">
+            Flight/Voyage: <input type="text" name="fly_voy" id="fly_voy" maxlength="20">
+        </div>
+        <br><br>
+        <div class="form-group">
+            Por of Loading: <input type="text" name="pol" id="pol" maxlength="30">
+            Por of Discharge: <input type="text" name="pod" id="pod" maxlength="30">
+            Final Destination: <input type="text" name="finalDest" id="finalDest" maxlength="20">
+            
+        </div>
+        <br><br>
+        <div class="form-group">
+            Departure Date: <input type="text" name="depDate" id="depDate" maxlength="10">
+            Arrival Date: <input type="text" name="arrDate" id="arrDate" maxlength="10">
+        
+        </div>
+        <br><br>
+        
         <div id="tableRows">
             <div class="tableRow">
-                Marks and Numbers: <input type="number" name="marks_and_numbers[]" class="marks_and_numbers" maxlength="5">
-                Pieces: <input type="number" name="pieces[]" class="pieces" maxlength="5">
-                Description: <input type="text" name="description[]" class="description" maxlength="20">
-                Weight: <input type="number" name="weight[]" class="weight" maxlength="5">
-                Vol Weight/Chargeable Weight: <input type="number" name="vol_weight[]" class="vol_weight" maxlength="5">
-                <button type="button" onclick="removeRow(this)">Remove</button>
+                <div>
+                    <label for="marks_and_numbers[]">Marks and Numbers:</label>
+                    <input type="number" name="marks_and_numbers[]" class="marks_and_numbers">
+                </div>
+                <div>
+                    <label for="pieces[]">Pieces:</label>
+                    <input type="number" name="pieces[]" class="pieces">
+                </div>
+                <div>
+                    <label for="description[]">Description:</label>
+                    <input type="text" name="description[]" class="description">
+                </div>
+                <div>
+                    <label for="weight[]">Weight:</label>
+                    <input type="number" name="weight[]" class="weight">
+                </div>
+                <div>
+                    <label for="vol_weight[]">Vol Weight/Chargeable Weight:</label>
+                    <input type="number" name="vol_weight[]" class="vol_weight">
+                </div>
+                <button class="remove-button" type="button" onclick="removeRow(this)">Remove</button>
             </div>
         </div>
-        <button type="button" onclick="addRow()">Add Row</button>
+        <button type="button" onclick="addRow()">Add Row</button><br><br>
         <button type="submit">Generate Preview</button>
     </form>
+
+
     <div id="preview"></div>
     
     <script>
@@ -96,12 +266,29 @@
             var row = document.createElement('div');
             row.className = 'tableRow';
             row.innerHTML = `
-                Marks and Numbers: <input type="text" name="marks_and_numbers[]" class="marks_and_numbers">
-                Pieces: <input type="text" name="pieces[]" class="pieces">
-                Description: <input type="text" name="description[]" class="description">
-                Weight: <input type="text" name="weight[]" class="weight">
-                Vol Weight/Chargeable Weight: <input type="text" name="vol_weight[]" class="vol_weight">
-                <button type="button" onclick="removeRow(this)">Remove</button>
+            
+                    <div>
+                        <label for="marks_and_numbers[]">Marks and Numbers:</label>
+                        <input type="number" name="marks_and_numbers[]" class="marks_and_numbers">
+                    </div>
+                    <div>
+                        <label for="pieces[]">Pieces:</label>
+                        <input type="number" name="pieces[]" class="pieces">
+                    </div>
+                    <div>
+                        <label for="description[]">Description:</label>
+                        <input type="text" name="description[]" class="description">
+                    </div>
+                    <div>
+                        <label for="weight[]">Weight:</label>
+                        <input type="number" name="weight[]" class="weight">
+                    </div>
+                    <div>
+                        <label for="vol_weight[]">Vol Weight/Chargeable Weight:</label>
+                        <input type="number" name="vol_weight[]" class="vol_weight">
+                    </div>
+                    <button class="remove-button" type="button" onclick="removeRow(this)">Remove</button>
+                
             `;
             container.appendChild(row);
         }
@@ -114,10 +301,14 @@
         
         document.getElementById('pdfForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the form from submitting via the browser
+            var carrier_agent_name = document.getElementById('carrier_agent_name').value;
+            var carrier_agent_contact = document.getElementById('carrier_agent_contact').value;
+            var carrier_agent_phone = document.getElementById('carrier_agent_phone').value;
+            var carrier_agent_fax = document.getElementById('carrier_agent_fax').value;
             var previewDiv = document.getElementById('preview'); 
             var date= document.getElementById('date').value;
             var xpdfile= document.getElementById('file_number').value;
-            var puf= document.getElementById('PUF').value;
+            var puf= document.getElementById('puf').value;
             var consignee= document.getElementById('consignee').value;
             var pickup_contact= document.getElementById('pickup_contact').value;
             var pickup_phone= document.getElementById('pickup_phone').value;
@@ -246,7 +437,7 @@
                                 <img style="position: relative;right: 200px;" src="images/xpdLogo.png" alt="XPD Logo">
                             </div>
                             <div style="padding-top: 50px;position: relative;right: 200px;" class="full-width">
-                                XPD GLOBAL (USA)<br>3340A GREENS RD BLD ST 700<br>HOUSTON, TX 77032, UNITED STATES <br>Contact: AEROSPACE TEAM<br>Phone: 786-7471184<br>Fax: 855-560-3632
+                                ${carrier_agent_name}<br>Contact: ${carrier_agent_contact}<br>Phone: ${carrier_agent_phone}<br>Fax:${carrier_agent_fax}
                             </div>
                             <div class=" full-width"><strong style="font-size: 20px; position: relative;left: 150px;top: 20px;"> Delivery Order (DO) - Export</strong></div>
                             <div class="full-width">
